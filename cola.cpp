@@ -1,25 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-#include <iostream>
-#include <stdio.h>
+#include "cola.h"
 
-using namespace std;
+Cola::Cola()
+{
 
-typedef int Dato;
-#include "Nodo.h"
+}
+
+#include "NodoSimple.h"
 
 template<class T>
-class Lista
+class ListaSimple
 {
 private:
 
-    Nodo<T>* primero;
-    Nodo<T>* ultimo;
+    NodoSimple<T>* primero;
+    NodoSimple<T>* ultimo;
 public:
-    Lista()
+    ListaSimple()
     {
         primero = 0;
         ultimo = 0;
@@ -29,10 +25,10 @@ public:
     void insertarNodo (T &x) {
 
         if(primero == 0){
-            primero = new Nodo<T>(x);
+            primero = new NodoSimple<T>(x);
             ultimo = primero;
         }else{
-            Nodo<T>* nuevo = new Nodo<T>(x);
+            NodoSimple<T>* nuevo = new NodoSimple<T>(x);
             ultimo->ponerEnlace(nuevo);
             ultimo = nuevo;
         }
@@ -40,7 +36,7 @@ public:
 
     void imprimirLista()
     {
-        Nodo<T>* tmp;
+        NodoSimple<T>* tmp;
         tmp = primero;
         while(tmp){
            cout<<"->"<<tmp->datoNodo();

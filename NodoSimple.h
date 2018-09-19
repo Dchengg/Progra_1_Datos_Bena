@@ -17,20 +17,20 @@
 
 
 template <class T>
-class Nodo
+class NodoSimple
 {
 private:
     T dato;
-    Nodo* enlace;
+    NodoSimple* enlace;
 public:
     
-    Nodo(T t)
+    NodoSimple(T valor)
     {
-    dato = t;
+    dato = valor;
     enlace = 0; // 0 es el puntero NULL en C++
     }
     
-    Nodo(T p, Nodo* n) // crea el nodo y lo enlaza a n
+    NodoSimple(T p, NodoSimple* n) // crea el nodo y lo enlaza a n
     {
     dato = p;
     enlace = n;
@@ -40,11 +40,11 @@ public:
     {
         return dato;
     }
-    Nodo* enlaceNodo() const
+    NodoSimple* enlaceNodo() const
     {
         return enlace;
     }
-    void ponerEnlace(Nodo* sgte)
+    void ponerEnlace(NodoSimple* sgte)
     {
         enlace = sgte;
     }
