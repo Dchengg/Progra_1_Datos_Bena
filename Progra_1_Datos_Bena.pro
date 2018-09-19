@@ -24,10 +24,13 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    Lista.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    Lista.h \
+    Nodo.h
 
 FORMS += \
         mainwindow.ui
