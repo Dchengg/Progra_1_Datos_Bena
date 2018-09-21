@@ -1,48 +1,40 @@
+#include <iostream>
+#include <stdio.h>
 #include "cola.h"
 
-Cola::Cola()
-{
-
-}
-
-#include "NodoSimple.h"
+using namespace std;
 
 template<class T>
-class ListaSimple
+Cola<T>::Cola()
 {
-private:
-
-    NodoSimple<T>* primero;
-    NodoSimple<T>* ultimo;
-public:
-    ListaSimple()
-    {
-        primero = 0;
-        ultimo = 0;
-    }
-
-
-    void insertarNodo (T &x) {
-
-        if(primero == 0){
-            primero = new NodoSimple<T>(x);
-            ultimo = primero;
-        }else{
-            NodoSimple<T>* nuevo = new NodoSimple<T>(x);
-            ultimo->ponerEnlace(nuevo);
-            ultimo = nuevo;
+    Tope = 0;
+    Fondo = 0;
+}
+template <class T>
+void Cola<T>::push(T &x){
+    if(!Tope){
+        Tope = new NodoSimple<T>(x);
+        Fondo = Tope;
+    }else{
+        NodoSimple<T>* aux = Tope;
+        while(aux->enlaceNodo()){
+            aux = aux->enlaceNodo();
         }
+        NodoSimple<T>* nuevo = new NodoSimple<T>(x);
+        aux->ponerEnlace(nuevo);
+        Fondo = nuevo;
     }
+}
 
-    void imprimirLista()
-    {
-        NodoSimple<T>* tmp;
-        tmp = primero;
-        while(tmp){
-           cout<<"->"<<tmp->datoNodo();
-           tmp = tmp->enlaceNodo();
-        };
-        cout<<endl;
-
+template<class T>
+void Cola<T>::imprimirCola()
+{
+    NodoSimple<T>* tmp;
+    tmp = Tope;
+    while(tmp){
+       cout<<"->"<<tmp->datoNodo();
+       tmp = tmp->enlaceNodo();
     }
-};
+    cout<<endl;
+
+}

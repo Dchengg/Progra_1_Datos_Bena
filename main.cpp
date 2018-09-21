@@ -1,17 +1,18 @@
 #include "mainwindow.h"
 #include "ListaSimple.cpp"
+#include "cola.cpp"
 #include <QApplication>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
-    ListaSimple<char*>* l1 = new ListaSimple<char*>;
-    char* x = "diego";
-    l1->insertarNodo(x);
-    x = "Justin";
-    l1->insertarNodo(x);
-    l1->imprimirLista();
+    Cola<char>* c1 = new Cola<char>;
+    char x = 'a';
+    c1->push(x);
+    x= 's';
+    c1->push(x);
+    c1->imprimirCola();
     w.show();
 
     return a.exec();
