@@ -7,7 +7,7 @@ typedef int Dato;
 template<class T>
 class ListaSimple
 {
-private:
+    public:
     NodoSimple<T>* primero;
 public:
     ListaSimple();

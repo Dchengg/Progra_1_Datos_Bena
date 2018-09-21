@@ -16,11 +16,11 @@ void ListaSimple<T>::insertarNodo (T &x) {
         primero = new NodoSimple<T>(x);
     }else{
         NodoSimple<T>* aux = primero;
-        while(aux->enlaceNodo()){
-            aux = aux->enlaceNodo();
+        while(aux->getSiguiente()){
+            aux = aux->getSiguiente();
         }
         NodoSimple<T>* nuevo = new NodoSimple<T>(x);
-        aux->ponerEnlace(nuevo);
+        aux->setSiguiente(nuevo);
     }
 }
 
@@ -30,8 +30,8 @@ void ListaSimple<T>::imprimirLista()
     NodoSimple<T>* tmp;
     tmp = primero;
     while(tmp){
-       cout<<"->"<<tmp->datoNodo();
-       tmp = tmp->enlaceNodo();
+       cout<<"->"<<tmp->getDato();
+       tmp = tmp->getSiguiente();
     }
     cout<<endl;
 

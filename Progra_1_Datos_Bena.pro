@@ -26,7 +26,8 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     ListaSimple.cpp \
-    cola.cpp
+    cola.cpp \
+    Ordenamientos.cpp
 
 HEADERS += \
         mainwindow.h \

@@ -23,7 +23,8 @@ private:
     T dato;
     NodoSimple* enlace;
 public:
-    
+    typedef T type;
+
     NodoSimple(T valor)
     {
     dato = valor;
@@ -36,15 +37,20 @@ public:
     enlace = n;
     }
     
-    T datoNodo()
+    T getDato()
     {
         return dato;
     }
-    NodoSimple* enlaceNodo() const
+
+    void setDato(T x){
+        dato = x;
+    }
+
+    NodoSimple* getSiguiente() const
     {
         return enlace;
     }
-    void ponerEnlace(NodoSimple* sgte)
+    void setSiguiente(NodoSimple* sgte)
     {
         enlace = sgte;
     }

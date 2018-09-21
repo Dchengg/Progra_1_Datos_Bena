@@ -16,13 +16,9 @@ void Cola<T>::push(T &x){
         Tope = new NodoSimple<T>(x);
         Fondo = Tope;
     }else{
-        NodoSimple<T>* aux = Tope;
-        while(aux->enlaceNodo()){
-            aux = aux->enlaceNodo();
-        }
         NodoSimple<T>* nuevo = new NodoSimple<T>(x);
-        aux->ponerEnlace(nuevo);
-        Fondo = nuevo;
+        nuevo->setSiguiente(Tope);
+        Tope = nuevo;
     }
 }
 
@@ -32,8 +28,8 @@ void Cola<T>::imprimirCola()
     NodoSimple<T>* tmp;
     tmp = Tope;
     while(tmp){
-       cout<<"->"<<tmp->datoNodo();
-       tmp = tmp->enlaceNodo();
+       cout<<"->"<<tmp->getDato();
+       tmp = tmp->getSiguiente();
     }
     cout<<endl;
 
