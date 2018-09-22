@@ -13,10 +13,10 @@ Cola<T>::Cola()
 template <class T>
 void Cola<T>::push(T &x){
     if(!Tope){
-        Tope = new NodoSimple<T>(x);
+        Tope = new Nodo<T>(x);
         Fondo = Tope;
     }else{
-        NodoSimple<T>* nuevo = new NodoSimple<T>(x);
+        Nodo<T>* nuevo = new Nodo<T>(x);
         nuevo->setSiguiente(Tope);
         Tope = nuevo;
     }
@@ -25,7 +25,7 @@ void Cola<T>::push(T &x){
 template<class T>
 void Cola<T>::imprimirCola()
 {
-    NodoSimple<T>* tmp;
+    Nodo<T>* tmp;
     tmp = Tope;
     while(tmp){
        cout<<"->"<<tmp->getDato();

@@ -7,7 +7,7 @@ template<class T>
 class ListaSimple
 {
     public:
-    NodoSimple<T>* primero;
+    Nodo<T>* primero;
 public:
     ListaSimple();
     void insertarNodo (T &x);

@@ -33,7 +33,8 @@ HEADERS += \
         mainwindow.h \
     NodoSimple.h \
     ListaSimple.h \
-    cola.h
+    cola.h \
+    ListaDoble.h
 
 FORMS += \
         mainwindow.ui

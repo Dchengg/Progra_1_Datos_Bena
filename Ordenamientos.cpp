@@ -30,7 +30,7 @@ void insertion(T *cabeza) {
     }
 }
 
-void auxBurbuja(NodoSimple<int>* nodo1,NodoSimple<int>* nodo2,int &flag){
+void auxBurbuja(Nodo<int>* nodo1,Nodo<int>* nodo2,int &flag){
     if(nodo1->getDato() > nodo2->getDato()){
         int tmp = nodo1->getDato();
         nodo1->setDato(nodo2->getDato());
@@ -48,12 +48,12 @@ void auxBurbuja(NodoSimple<int>* nodo1,NodoSimple<int>* nodo2,int &flag){
     }
 }
 
-void biBurbuja(NodoSimple<int>* cabeza){
+void biBurbuja(Nodo<int>* cabeza){
     if(!cabeza || !cabeza->getSiguiente()) {
        return;
     }
-    NodoSimple<int>* aux1 = cabeza;
-    NodoSimple<int>* aux2 = cabeza->getSiguiente();
+    Nodo<int>* aux1 = cabeza;
+    Nodo<int>* aux2 = cabeza->getSiguiente();
     int flag = 0;
     while(!flag || aux2){
        flag = 1;

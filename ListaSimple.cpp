@@ -13,13 +13,13 @@ ListaSimple<T>::ListaSimple()
 template<class T>
 void ListaSimple<T>::insertarNodo (T &x) {
     if(!primero){
-        primero = new NodoSimple<T>(x);
+        primero = new Nodo<T>(x);
     }else{
-        NodoSimple<T>* aux = primero;
+        Nodo<T>* aux = primero;
         while(aux->getSiguiente()){
             aux = aux->getSiguiente();
         }
-        NodoSimple<T>* nuevo = new NodoSimple<T>(x);
+        Nodo<T>* nuevo = new Nodo<T>(x);
         aux->setSiguiente(nuevo);
     }
 }
@@ -27,7 +27,7 @@ void ListaSimple<T>::insertarNodo (T &x) {
 template<class T>
 void ListaSimple<T>::imprimirLista()
 {
-    NodoSimple<T>* tmp;
+    Nodo<T>* tmp;
     tmp = primero;
     while(tmp){
        cout<<"->"<<tmp->getDato();
