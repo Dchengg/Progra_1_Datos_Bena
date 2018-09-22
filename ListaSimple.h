@@ -1,7 +1,6 @@
 #ifndef LISTA_H
 #define LISTA_H
 
-typedef int Dato;
 #include "NodoSimple.h"
 
 template<class T>

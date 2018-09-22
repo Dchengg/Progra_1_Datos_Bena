@@ -7,12 +7,18 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
-    ListaSimple<char>* l1 = new ListaSimple<char>;
-    char x = 'b';
+    ListaSimple<int>* l1 = new ListaSimple<int>;
+    int x = 2;
     l1->insertarNodo(x);
-    x= 'a';
+    x= 4;
     l1->insertarNodo(x);
-    insertion(l1->primero);
+    x= 3;
+    l1->insertarNodo(x);
+    x= 0;
+    l1->insertarNodo(x);
+    x= 1;
+    l1->insertarNodo(x);
+    biBurbuja(l1->primero);
     l1->imprimirLista();
 
     w.show();
