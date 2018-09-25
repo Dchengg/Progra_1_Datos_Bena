@@ -2,12 +2,13 @@
 #include "cola.cpp"
 #include "Ordenamientos.cpp"
 #include <QApplication>
+#include "ListaDoble.cpp"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
-    ListaSimple<int>* l1 = new ListaSimple<int>;
+    ListaDoble<int>* l1 = new ListaDoble<int>;
     int x = 2;
     l1->insertarNodo(x);
     x= 4;
