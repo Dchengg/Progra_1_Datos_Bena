@@ -11,15 +11,15 @@ ListaSimple<T>::ListaSimple()
 }
 
 template<class T>
-void ListaSimple<T>::insertarNodo (T &x) {
+void ListaSimple<T>::insertarNodo (T &dato) {
     if(!primero){
-        primero = new Nodo<T>(x);
+        primero = new Nodo<T>(dato);
     }else{
         Nodo<T>* aux = primero;
         while(aux->getSiguiente()){
             aux = aux->getSiguiente();
         }
-        Nodo<T>* nuevo = new Nodo<T>(x);
+        Nodo<T>* nuevo = new Nodo<T>(dato);
         aux->setSiguiente(nuevo);
     }
 }

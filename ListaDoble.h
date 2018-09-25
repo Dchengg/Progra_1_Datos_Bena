@@ -1,32 +1,19 @@
-#ifndef LISTADOBLE_H
-#define LISTADOBLE_H
-#include "NodoDoble.h"
+#ifndef LISTA_DOBLE_H
+#define LISTA_DOBLE_H
+
+#include "NodoSimple.h"
+
 template<class T>
 class ListaDoble
 {
-    private:
-        NodoDoble<T>* cola;
-        NodoDoble<T>* actual;
-        NodoDoble<T>* cabeza;
-        int tamanio;
+    public:
+        Nodo<T>* primero;
     public:
         ListaDoble();
-        ~ListaDoble();
-        void insertar(T dato);
-        void agregarFinal(T dato);
-        T eliminar();
-        void vaciar();
-        T obtenerElemento();
-        void irInicio();
-        void irFinal();
-        void irPosicion();
-        void siguiente();
-        void anterior();
-        bool alInicio();
-        bool alFinal();
-        int obtenerPosicion();
-        int obtenerTamanio();
-
+        void insertarNodo (T &Dato);
+        void imprimirLista();
 };
 
-#endif // LISTADOBLE_H
+
+#endif // ListaSimple_H
+

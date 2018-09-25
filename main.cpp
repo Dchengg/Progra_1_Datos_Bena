@@ -3,6 +3,7 @@
 #include "Ordenamientos.cpp"
 #include "string.h"
 #include <QApplication>
+#include "ListaDoble.cpp"
 
 int main(int argc, char *argv[])
 {
