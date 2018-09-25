@@ -1,22 +1,23 @@
 #include "mainwindow.h"
 #include "cola.cpp"
 #include "Ordenamientos.cpp"
+#include "string.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
-    ListaSimple<int>* l1 = new ListaSimple<int>;
-    int x = 2;
+    ListaSimple<string>* l1 = new ListaSimple<string>;
+    string x = "hola";
     l1->insertarNodo(x);
-    x= 4;
+    x= "arbol";
     l1->insertarNodo(x);
-    x= 3;
+    x= "diego";
     l1->insertarNodo(x);
-    x= 0;
+    x= "cheng";
     l1->insertarNodo(x);
-    x= 1;
+    x= "sofia";
     l1->insertarNodo(x);
     biBurbuja(l1->primero);
     l1->imprimirLista();

@@ -31,10 +31,10 @@ SOURCES += \
 
 HEADERS += \
         mainwindow.h \
-    NodoSimple.h \
     ListaSimple.h \
     cola.h \
-    ListaDoble.h
+    ListaDoble.h \
+    Nodo.h
 
 FORMS += \
         mainwindow.ui

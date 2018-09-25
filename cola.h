@@ -1,7 +1,7 @@
 #ifndef COLA_H
 #define COLA_H
 
-#include "NodoSimple.h"
+#include "Nodo.h"
 
 template<class T>
 class Cola

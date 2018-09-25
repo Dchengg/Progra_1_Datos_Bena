@@ -30,9 +30,10 @@ void insertion(T *cabeza) {
     }
 }
 
-void auxBurbuja(Nodo<int>* nodo1,Nodo<int>* nodo2,int &flag){
+template<class T>
+void auxBurbuja(T *nodo1,T *nodo2,int &flag){
     if(nodo1->getDato() > nodo2->getDato()){
-        int tmp = nodo1->getDato();
+        typename T::type tmp = nodo1->getDato();
         nodo1->setDato(nodo2->getDato());
         nodo2->setDato(tmp);
         flag = 0;
@@ -40,7 +41,7 @@ void auxBurbuja(Nodo<int>* nodo1,Nodo<int>* nodo2,int &flag){
     if(nodo2->getSiguiente()){
         auxBurbuja(nodo1->getSiguiente(),nodo2->getSiguiente(),flag);
         if(nodo1->getDato() > nodo2->getDato()){
-            int tmp = nodo1->getDato();
+            typename T::type tmp = nodo1->getDato();
             nodo1->setDato(nodo2->getDato());
             nodo2->setDato(tmp);
             flag = 0;
@@ -48,12 +49,13 @@ void auxBurbuja(Nodo<int>* nodo1,Nodo<int>* nodo2,int &flag){
     }
 }
 
-void biBurbuja(Nodo<int>* cabeza){
+template<class T>
+void biBurbuja(T *cabeza){
     if(!cabeza || !cabeza->getSiguiente()) {
        return;
     }
-    Nodo<int>* aux1 = cabeza;
-    Nodo<int>* aux2 = cabeza->getSiguiente();
+    T* aux1 = cabeza;
+    T* aux2 = cabeza->getSiguiente();
     int flag = 0;
     while(!flag || aux2){
        flag = 1;
@@ -64,4 +66,7 @@ void biBurbuja(Nodo<int>* cabeza){
 
 }
 
+void heapSort(Nodo<int>* cabeza){
+
+}
 
