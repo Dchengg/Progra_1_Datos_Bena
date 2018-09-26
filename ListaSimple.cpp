@@ -8,6 +8,7 @@ template<class T>
 ListaSimple<T>::ListaSimple()
 {
     primero = 0;
+    tam = 0;
 }
 
 template<class T>
@@ -22,6 +23,7 @@ void ListaSimple<T>::insertarNodo (T &dato) {
         Nodo<T>* nuevo = new Nodo<T>(dato);
         aux->setSiguiente(nuevo);
     }
+    tam++;
 }
 
 template<class T>
@@ -35,4 +37,17 @@ void ListaSimple<T>::imprimirLista()
     }
     cout<<endl;
 
+}
+template<class T>
+int ListaSimple<T>::getTam(){
+    return tam;
+}
+
+template<class T>
+Nodo<T>* ListaSimple<T>::operator[](int const index) {
+    Nodo<T>* aux = primero;
+    for (int i = 0; i < index; i++) {
+        aux = aux->getSiguiente();
+    }
+    return aux;
 }

@@ -5,23 +5,26 @@
 #include <QApplication>
 #include "ListaDoble.cpp"
 
+
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
-    ListaSimple<string>* l1 = new ListaSimple<string>;
-    string x = "hola";
+    ListaSimple<int>* l1 = new ListaSimple<int>;
+    int x = 4;
     l1->insertarNodo(x);
-    x= "arbol";
+    x= 10;
     l1->insertarNodo(x);
-    x= "diego";
+    x= 3;
     l1->insertarNodo(x);
-    x= "cheng";
+    x= 5;
     l1->insertarNodo(x);
-    x= "sofia";
+    x = 1;
     l1->insertarNodo(x);
-    biBurbuja(l1->primero);
+    heapSort(*l1);
     l1->imprimirLista();
+
 
     w.show();
 
