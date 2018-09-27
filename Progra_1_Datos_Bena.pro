@@ -28,14 +28,18 @@ SOURCES += \
     ListaSimple.cpp \
     cola.cpp \
     Ordenamientos.cpp \
-    ListaDoble.cpp
+    ListaDoble.cpp \
+    pila.cpp \
+    burbuja.cpp
 
 HEADERS += \
         mainwindow.h \
     ListaSimple.h \
     cola.h \
     ListaDoble.h \
-    Nodo.h
+    Nodo.h \
+    pila.h \
+    burbuja.h
 
 FORMS += \
         mainwindow.ui
