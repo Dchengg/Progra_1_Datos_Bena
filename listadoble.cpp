@@ -7,10 +7,12 @@ template<class T>
 ListaDoble<T>::ListaDoble() //
 {
     primero = 0;
+    tam = 0;
 }
 
 template<class T>
-void ListaDoble<T>::insertarNodo (T &dato) {
+void ListaDoble<T>::insertarNodo (T &dato)
+{
     if(!primero)
     {
         primero = new Nodo<T>(dato);
@@ -25,6 +27,7 @@ void ListaDoble<T>::insertarNodo (T &dato) {
         auxiliar->setSiguiente(nuevo);
         nuevo->setAnterior(auxiliar);
     }
+    tam++;
 }
 
 template<class T>
@@ -38,4 +41,19 @@ void ListaDoble<T>::imprimirLista()
         }
         cout<<endl;
     }
+
+template<class T>
+int ListaDoble<T>::getTam()
+{
+    return tam;
+}
+
+template<class T>
+Nodo<T>* ListaDoble<T>::operator[](int const index) {
+    Nodo<T>* aux = primero;
+    for (int i = 0; i < index; i++) {
+        aux = aux->getSiguiente();
+    }
+    return aux;
+}
 

@@ -11,20 +11,19 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
-    ListaSimple<int>* l1 = new ListaSimple<int>;
-    int x = 4;
+    ListaDoble<char>* l1 = new ListaDoble<char>;
+    char x = 'b';
     l1->insertarNodo(x);
-    x= 10;
+    x= 'c';
     l1->insertarNodo(x);
-    x= 3;
+    x= 'a';
     l1->insertarNodo(x);
-    x= 5;
+    x= 'z';
     l1->insertarNodo(x);
-    x = 1;
+    x = 'A';
     l1->insertarNodo(x);
     radixsort(*l1);
     l1->imprimirLista();
-
 
     w.show();
 

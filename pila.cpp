@@ -25,3 +25,20 @@ void pila<T>::push(T &dato)
         Tope = nuevo;
     }
 }
+
+template<class T>
+
+int pila<T>::getTam()
+{
+    return tam;
+}
+
+template<class T>
+Nodo<T>* pila<T>::operator[](int const index) {
+    Nodo<T>* aux = Tope;
+    for (int i = 0; i < index; i++) {
+        aux = aux->getSiguiente();
+    }
+    return aux;
+}
+
