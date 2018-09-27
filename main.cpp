@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
     l1->insertarNodo(x);
     x = 1;
     l1->insertarNodo(x);
-    heapSort(*l1);
+    radixsort(*l1);
     l1->imprimirLista();
 
 
