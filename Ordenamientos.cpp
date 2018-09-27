@@ -172,3 +172,39 @@ void radixsort(ListaSimple<int> l1)
     for (int exp = 1; m/exp > 0; exp *= 10)
         countSort(l1, n, exp);
 }
+//====================================================
+template <class T>
+
+void Burbuja(T cabeza)
+{
+    int condicion;
+    T nodo1 = cabeza;
+    T nodo2 = NULL;
+    if(!cabeza || !nodo1->getSiguiente())
+    {
+       return;
+    }
+    do {
+        condicion=0;
+        nodo1 = cabeza;
+        while (nodo1->getSiguiente() )
+        {
+            if(nodo1->getDato() > nodo1->getSiguiente()->getDato())
+            {
+               swapb(nodo1,nodo1->getSiguiente());
+               condicion=1;
+            }
+            nodo1 = nodo1->getSiguiente();
+        }
+        nodo2 = nodo1;
+    }while(condicion);
+}
+
+template <class T>
+void swapb(T *nodo1, T *nodo2)
+{
+    typename T::type temporal = nodo1->getDato();
+    nodo1 -> setDato(nodo2->getDato());
+    nodo2 -> setDato(temporal);
+
+}

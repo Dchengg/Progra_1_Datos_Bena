@@ -10,34 +10,30 @@ burbuja::burbuja()
 
 template <class T>
 
-void BurbujaP(T *cabeza)
+void Burbuja(T *cabeza)
 {
-    if(!cabeza || !cabeza->getSiguiente())
+    int condicion;
+    Nodo<T> *nodo1;
+    Nodo<T> *nodo2 = NULL;
+    if(!cabeza || !nodo1->getSiguiente())
     {
        return;
     }
-}
-
-template <class T>
-void BurbujaS(T *nodo1,T *nodo2,int &flag)
-{
-    if(nodo1->getDato() > nodo2->getDato())
-    {
-        typename T::type temporal = nodo1->getDato();
-        nodo1->setDato(nodo2->getDato());
-        nodo2->setDato(temporal);
-        flag = 0;
-    }
-    if(nodo2->getSiguiente())
-    {
-        if(nodo1->getDato() > nodo2->getDato())
+    do {
+        condicion=1;
+        nodo1 = cabeza;
+        while (!nodo1->getSiguiente())
         {
-            typename T::type temporal = nodo1->getDato();
-            nodo1->setDato(nodo2->getDato());
-            nodo2->setDato(temporal);
-            flag = 0;
+            condicion=0;
+            if(nodo1->getDato() > nodo2->getDato())
+            {
+               swap(nodo1,nodo2);
+               condicion=1;
+            }
+            nodo1 = nodo1->getSiguiente();
         }
-    }
+        nodo2 = nodo1;
+    }while(condicion);
 }
 
 template <class T>

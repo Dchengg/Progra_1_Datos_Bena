@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
     l1->insertarNodo(x);
     x = 1;
     l1->insertarNodo(x);
-    radixsort(*l1);
+    Burbuja(l1->primero);
     l1->imprimirLista();
 
 
