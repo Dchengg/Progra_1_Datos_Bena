@@ -67,15 +67,19 @@ void biBurbuja(T *cabeza){
 
 }
 
-void swap(Nodo<int>* nodo1, Nodo<int>* nodo2){
+template<class T>
+void intercambio(T nodo1, T nodo2){
     int temp = nodo1->getDato();
     nodo1->setDato(nodo2->getDato());
     nodo2->setDato(temp);
 
 }
+
+
 // To heapify a subtree rooted with node i which is
 // an index in arr[]. n is size of heap
-void heapify(ListaSimple<int> l1, int n, int i)
+template<class T>
+void heapify(T l1, int n, int i)
 {
     int largest = i; // Initialize largest as root
     int l = 2*i + 1; // left = 2*i + 1
@@ -92,15 +96,16 @@ void heapify(ListaSimple<int> l1, int n, int i)
     // If largest is not root
     if (largest != i)
     {
-        swap(l1[i], l1[largest]);
+        intercambio(l1[i], l1[largest]);
 
         // Recursively heapify the affected sub-tree
         heapify(l1, n, largest);
     }
 }
 
+template<class T>
 // main function to do heap sort
-void heapSort(ListaSimple<int> l1)
+void heapSort(T l1)
 {
     int n = l1.getTam();
     // Build heap (rearrange array)
@@ -111,7 +116,7 @@ void heapSort(ListaSimple<int> l1)
     for (int i=n-1; i>=0; i--)
     {
         // Move current root to end
-        swap(l1[0], l1[i]);
+        intercambio(l1[0], l1[i]);
 
         // call max heapify on the reduced heap
         heapify(l1, i, 0);
@@ -120,9 +125,10 @@ void heapSort(ListaSimple<int> l1)
 }
 
 // A utility function to get maximum value in arr[]
-int getMax(ListaSimple<int> l1, int n)
+template<class T>
+int getMax(T l1, int n)
 {
-    int mx = l1[0]->getDato();
+    typename T::type mx = l1[0]->getDato();
     for (int i = 1; i < n; i++)
         if (l1[i]->getDato() > mx)
             mx = l1[i]->getDato();
@@ -131,7 +137,8 @@ int getMax(ListaSimple<int> l1, int n)
 
 // A function to do counting sort of arr[] according to
 // the digit represented by exp.
-void countSort(ListaSimple<int> l1, int n, int exp)
+template <class T>
+void countSort(T l1, int n, int exp)
 {
     int output[n]; // output array
     int i, count[10] = {0};
@@ -144,7 +151,6 @@ void countSort(ListaSimple<int> l1, int n, int exp)
     //  position of this digit in output[]
     for (i = 1; i < 10; i++)
         count[i] += count[i - 1];
-
     // Build the output array
     for (i = n - 1; i >= 0; i--)
     {
@@ -160,11 +166,12 @@ void countSort(ListaSimple<int> l1, int n, int exp)
 
 // The main function to that sorts arr[] of size n using
 // Radix Sort
-void radixsort(ListaSimple<int> l1)
+template<class T>
+void radixsort(T l1)
 {
     int n = l1.getTam();
     // Find the maximum number to know number of digits
-    int m = getMax(l1, n);
+    typename T::type m = getMax(l1, n);
 
     // Do counting sort for every digit. Note that instead
     // of passing digit number, exp is passed. exp is 10^i

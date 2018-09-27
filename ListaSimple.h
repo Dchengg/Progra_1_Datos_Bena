@@ -13,6 +13,7 @@ class ListaSimple
         Nodo<T>* primero;
         int tam;
     public:
+        typedef T type;
         ListaSimple();
         void insertarNodo (T &x);
         void imprimirLista();

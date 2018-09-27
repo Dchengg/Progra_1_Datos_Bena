@@ -34,3 +34,19 @@ void Cola<T>::imprimirCola()
     cout<<endl;
 
 }
+
+template<class T>
+int Cola<T>::getTam()
+{
+    return tam;
+}
+
+template<class T>
+Nodo<T>* Cola<T>::operator[](int const index) {
+    Nodo<T>* aux =Tope;
+    for (int i = 0; i < index; i++) {
+        aux = aux->getSiguiente();
+    }
+    return aux;
+}
+
