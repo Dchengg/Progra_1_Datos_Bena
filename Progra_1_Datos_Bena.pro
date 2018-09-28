@@ -29,8 +29,7 @@ SOURCES += \
     cola.cpp \
     Ordenamientos.cpp \
     ListaDoble.cpp \
-    pila.cpp \
-    burbuja.cpp
+    pila.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -38,8 +37,7 @@ HEADERS += \
     cola.h \
     ListaDoble.h \
     Nodo.h \
-    pila.h \
-    burbuja.h
+    pila.h
 
 FORMS += \
         mainwindow.ui
