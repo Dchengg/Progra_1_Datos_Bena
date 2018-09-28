@@ -224,7 +224,26 @@ void quickSort(T l1, int low, int high)
         quickSort(l1, pi + 1, high);
     }
 }
-//====================================================
+//===================SELECTION=SORT=================================
+template <class T>
+void SelectionSort(T estructura){ //r is the pointer to the first node
+    while(estructura != NULL){
+        Nodo<T> *puntero2=NULL;
+        Nodo<T> *puntero=estructura;
+        int temp = puntero->getDato();
+        while(puntero!= NULL){
+            if( temp > puntero->getDato()){
+                puntero2=puntero; //p points to the smallest element in the list
+                temp=puntero->getDato();
+            }
+            puntero=puntero->getSiguiente(); //q goes to the next node
+        }
+        if(puntero2!=NULL)
+            intercambio( puntero2->getDato(),estructura->getDato());
+        estructura=estructura->getSiguiente(); //r goes to the next node
+    }
+}
+//===================BUBBLE=SORT=================================
 template <class T>
 
 void Burbuja(T cabeza)
@@ -251,5 +270,8 @@ void Burbuja(T cabeza)
         nodo2 = nodo1;
     }while(condicion);
 }
+//===================SHELL=SORT=================================
 
+//===================MERGE=SORT=================================
 
+//===================BIN=SORT=================================
