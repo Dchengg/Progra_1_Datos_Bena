@@ -9,6 +9,7 @@ Cola<T>::Cola()
 {
     Tope = 0;
     Fondo = 0;
+    tam = 0;
 }
 template <class T>
 void Cola<T>::push(T &x){

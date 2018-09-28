@@ -179,6 +179,51 @@ void radixsort(T l1)
     for (int exp = 1; m/exp > 0; exp *= 10)
         countSort(l1, n, exp);
 }
+
+/* This function takes last element as pivot, places
+   the pivot element at its correct position in sorted
+    array, and places all smaller (smaller than pivot)
+   to left of pivot and all greater elements to right
+   of pivot */
+template<class T>
+int partition (T l1, int low, int high)
+{
+    typename T::type pivot = l1[high]->getDato();    // pivot
+    int i = (low - 1);  // Index of smaller element
+
+    for (int j = low; j <= high- 1; j++)
+    {
+        // If current element is smaller than or
+        // equal to pivot
+        if (l1[j]->getDato() <= pivot)
+        {
+            i++;    // increment index of smaller element
+            intercambio(l1[i], l1[j]);
+        }
+    }
+    intercambio(l1[i + 1], l1[high]);
+    return (i + 1);
+}
+
+/* The main function that implements QuickSort
+ arr[] --> Array to be sorted,
+  low  --> Starting index,
+  high  --> Ending index */
+template<class T>
+void quickSort(T l1, int low, int high)
+{
+    if (low < high)
+    {
+        /* pi is partitioning index, arr[p] is now
+           at right place */
+        int pi = partition(l1, low, high);
+
+        // Separately sort elements before
+        // partition and after parti    tion
+        quickSort(l1, low, pi - 1);
+        quickSort(l1, pi + 1, high);
+    }
+}
 //====================================================
 template <class T>
 

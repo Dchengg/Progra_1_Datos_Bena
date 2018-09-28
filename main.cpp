@@ -11,18 +11,20 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
-    ListaDoble<char>* l1 = new ListaDoble<char>;
-    char x = 'b';
+    ListaSimple<int>* l1 = new ListaSimple<int>;
+    int x = 10;
     l1->insertarNodo(x);
-    x= 'c';
+    x= 4;
     l1->insertarNodo(x);
-    x= 'a';
+    x= 1;
     l1->insertarNodo(x);
-    x= 'z';
+    x= 9;
     l1->insertarNodo(x);
-    x = 'A';
+    x = 0;
     l1->insertarNodo(x);
-    heapSort(*l1);
+    x = 4;
+    l1->insertarNodo(x);
+    quickSort(*l1,0,l1->getTam()-1);
     l1->imprimirLista();
 
     w.show();

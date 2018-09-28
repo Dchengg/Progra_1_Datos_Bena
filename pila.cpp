@@ -9,6 +9,7 @@ pila<T>::pila()
 {
     Tope = 0;
     Fondo = 0;
+    tam = 0;
 }
 
 template<class T>
