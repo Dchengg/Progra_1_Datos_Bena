@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
     l1->insertarNodo(x);
     x = 'A';
     l1->insertarNodo(x);
-    Burbuja(l1->primero);
+    heapSort(*l1);
     l1->imprimirLista();
 
     w.show();

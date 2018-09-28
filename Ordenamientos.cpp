@@ -198,7 +198,7 @@ void Burbuja(T cabeza)
         {
             if(nodo1->getDato() > nodo1->getSiguiente()->getDato())
             {
-               swapb(nodo1,nodo1->getSiguiente());
+               intercambio(nodo1,nodo1->getSiguiente());
                condicion=1;
             }
             nodo1 = nodo1->getSiguiente();
@@ -207,11 +207,4 @@ void Burbuja(T cabeza)
     }while(condicion);
 }
 
-template <class T>
-void swapb(T *nodo1, T *nodo2)
-{
-    typename T::type temporal = nodo1->getDato();
-    nodo1 -> setDato(nodo2->getDato());
-    nodo2 -> setDato(temporal);
 
-}
