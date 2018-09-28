@@ -1,6 +1,3 @@
-#include "ListaSimple.cpp"
-
-
 template<class T>
 void insertion(T *cabeza) {
     if(!cabeza || !cabeza->getSiguiente()) {

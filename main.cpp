@@ -3,7 +3,9 @@
 #include "Ordenamientos.cpp"
 #include "string.h"
 #include <QApplication>
-#include "ListaDoble.cpp"
+#include "listadoble.cpp"
+#include "ListaSimple.cpp"
+#include "randomizer.cpp"
 
 
 
@@ -11,22 +13,11 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
+    srand(time(NULL));
     ListaSimple<int>* l1 = new ListaSimple<int>;
-    int x = 10;
-    l1->insertarNodo(x);
-    x= 4;
-    l1->insertarNodo(x);
-    x= 1;
-    l1->insertarNodo(x);
-    x= 9;
-    l1->insertarNodo(x);
-    x = 0;
-    l1->insertarNodo(x);
-    x = 4;
-    l1->insertarNodo(x);
+    llenarTDA(l1,15,65,90);
     quickSort(*l1,0,l1->getTam()-1);
     l1->imprimirLista();
-
     w.show();
 
     return a.exec();
