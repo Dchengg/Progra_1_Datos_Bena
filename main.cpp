@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
-    ListaDoble<int>* l1sta = new ListaDoble<int>;
+    ListaSimple<int>* l1sta = new ListaSimple<int>;
     int dato = 10;
     l1sta->insertarNodo(dato);
     dato= 4;
@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
     l1sta->insertarNodo(dato);
 
     l1sta->imprimirLista();
-    SelectionSort(l1sta);
+    SelectionSort(l1sta->primero);
     l1sta->imprimirLista();
 
     w.show();
