@@ -270,6 +270,112 @@ void Burbuja(T cabeza)
 }
 //===================SHELL=SORT=================================
 
+template <class T>
+void ShellSort(T cabeza)
+{
+    if(cabeza)
+    {
+        int step=0;
+        int lenght=0;
+        T puntero=cabeza;
+        while(puntero)
+        {
+            lenght++;
+            puntero=puntero->getSiguiente();
+        }
+        while(2*(3*step+1)<=lenght)
+            step=3*step+1;
+        for(step;step>0;step/=3)
+            for(int i=step;i>0;i--)
+                for(int j=step-i; j<lenght; j+=step)
+                {
+                    puntero=cabeza;
+                    int k;
+                    for(k=0;k<j;k++)
+                        puntero=puntero->getSiguiente();
+                    T c=puntero;
+                    int temp=k+step;
+                    while(c)
+                    {
+                        for(k;k<temp;)
+                            if(c)
+                            {
+                                k++;
+                                c=c->getSiguiente();
+                            }
+                            else break;
+                            if(c)
+                                if(puntero->getDato()>c->getDato())
+                                {
+                                    int t=puntero->getDato();
+                                    puntero->getDato()=c->getDato();
+                                    c->getDato()=t;
+                                }
+                                temp+=step;
+                    }
+                }
+    }
+    cout<<"Sorting is done"<<endl;
+}
 //===================MERGE=SORT=================================
+template <class T>
+void MergeSort(T **head)
+{
+    T *first = new Nodo<T>;
+    T *second = new Nodo<T>;
+    T *temp = new Nodo<T>;
+    first = *head;
+    temp = *head;
 
+    // Return if list have less than two nodes.
+    if(first == NULL || first->next == NULL)
+    {
+        return;
+    }
+    else
+    {
+        // Break the list into two half as first and second as head of list.
+        while(first->next != NULL)
+        {
+            first = first->next;
+            if(first->next != NULL)
+            {
+                temp = temp->next;
+                first = first->next;
+            }
+        }
+        second = temp->next;
+        temp->next = NULL;
+        first = *head;
+    }
+
+    // Implementing divide and conquer approach.
+    MergeSort(&first);
+    MergeSort(&second);
+
+    // Merge the two part of the list into a sorted one.
+    *head = Merge(first, second);
+}
 //===================BIN=SORT=================================
+void bucketSort(float arr[], int n)
+{
+    // 1) Create n empty buckets
+    vector<float> b[n];
+
+    // 2) Put array elements in different buckets
+    for (int i=0; i<n; i++)
+    {
+       int bi = n*arr[i]; // Index in bucket
+       b[bi].push_back(arr[i]);
+    }
+
+    // 3) Sort individual buckets
+    for (int i=0; i<n; i++)
+       sort(b[i].begin(), b[i].end());
+
+    // 4) Concatenate all buckets into arr[]
+    int index = 0;
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < b[i].size(); j++)
+          arr[index++] = b[i][j];
+}

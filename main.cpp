@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
     l1sta->insertarNodo(dato);
 
     l1sta->imprimirLista();
-    SelectionSort(l1sta->primero);
+    ShellSort(l1sta->primero);
     l1sta->imprimirLista();
 
     w.show();
