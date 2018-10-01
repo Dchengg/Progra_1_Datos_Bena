@@ -1,5 +1,5 @@
 #include "ListaSimple.cpp"
-
+#include <vector>
 
 template<class T>
 void insertion(T *cabeza) {
@@ -68,8 +68,8 @@ void biBurbuja(T *cabeza){
 }
 
 template<class T>
-void intercambio(T nodo1, T nodo2){
-    int temp = nodo1->getDato();
+void intercambio(T* nodo1, T* nodo2){
+    typename T::type temp = nodo1->getDato();
     nodo1->setDato(nodo2->getDato());
     nodo2->setDato(temp);
 
@@ -318,12 +318,12 @@ void ShellSort(T cabeza)
     cout<<"Sorting is done"<<endl;
 }
 //===================MERGE=SORT=================================
-template <class T>
+/*template <class T>
 void MergeSort(T **head)
 {
-    T *first = new Nodo<T>;
-    T *second = new Nodo<T>;
-    T *temp = new Nodo<T>;
+    T first = new Nodo<T>;
+    T second = new Nodo<T>;
+    T temp = new Nodo<T>;
     first = *head;
     temp = *head;
 
@@ -355,18 +355,92 @@ void MergeSort(T **head)
 
     // Merge the two part of the list into a sorted one.
     *head = Merge(first, second);
+}*/
+//mergeSort(*lista,0,lista->getTam()-1);
+void merge(ListaSimple<int> lista, int l, int m, int r)
+{
+    int i, j, k;
+    int n1 = m - l + 1;
+    int n2 =  r - m;
+
+    /* create temp arrays */
+    int L[n1], R[n2];
+
+    /* Copy data to temp arrays L[] and R[] */
+    for (i = 0; i < n1; i++)
+        L[i] = lista[l + i]->getDato();
+    for (j = 0; j < n2; j++)
+        R[j] = lista[m + 1+ j]->getDato();
+
+    /* Merge the temp arrays back into arr[l..r]*/
+    i = 0; // Initial index of first subarray
+    j = 0; // Initial index of second subarray
+    k = l; // Initial index of merged subarray
+    while (i < n1 && j < n2)
+    {
+        if (L[i] <= R[j])
+        {
+            lista[k]->setDato(L[i]);
+            i++;
+        }
+        else
+        {
+            lista[k]->setDato(R[j]);
+            j++;
+        }
+        k++;
+    }
+
+    /* Copy the remaining elements of L[], if there
+       are any */
+    while (i < n1)
+    {
+        lista[k]->setDato(L[i]);
+        i++;
+        k++;
+    }
+
+    /* Copy the remaining elements of R[], if there
+       are any */
+    while (j < n2)
+    {
+        lista[k]->setDato(R[j]);
+        j++;
+        k++;
+    }
+}
+
+/* l is for left index and r is right index of the
+   sub-array of arr to be sorted */
+
+void mergeSort(ListaSimple<int> l1, int l, int r)
+{
+
+    if (l < r)
+    {
+        // Same as (l+r)/2, but avoids overflow for
+        // large l and h
+        int m = l+(r-l)/2;
+
+        // Sort first and second halves
+        mergeSort(l1, l, m);
+        mergeSort(l1, m+1, r);
+
+        merge(l1, l, m, r);
+    }
 }
 //===================BIN=SORT=================================
-void bucketSort(float arr[], int n)
+/*void bucketSort(ListaSimple<int> lista)
 {
     // 1) Create n empty buckets
-    vector<float> b[n];
+    int n =  lista.getTam()-1;
+    vector<int> b[n];  //cambiar a typename T::type
 
     // 2) Put array elements in different buckets
     for (int i=0; i<n; i++)
     {
-       int bi = n*arr[i]; // Index in bucket
-       b[bi].push_back(arr[i]);
+       int bi = n * lista[i]->getDato(); // Index in bucket
+       b[bi].push_back(lista[i]->getDato());
     }
 
     // 3) Sort individual buckets
@@ -377,5 +451,6 @@ void bucketSort(float arr[], int n)
     int index = 0;
     for (int i = 0; i < n; i++)
         for (int j = 0; j < b[i].size(); j++)
-          arr[index++] = b[i][j];
+          lista[index++] = b[i][j];
 }
+*/

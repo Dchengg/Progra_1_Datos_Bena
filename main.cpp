@@ -11,23 +11,23 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
-    ListaSimple<int>* l1sta = new ListaSimple<int>;
+    ListaSimple<int>* lista = new ListaSimple<int>;
     int dato = 10;
-    l1sta->insertarNodo(dato);
+    lista->insertarNodo(dato);
     dato= 4;
-    l1sta->insertarNodo(dato);
+    lista->insertarNodo(dato);
     dato= 1;
-    l1sta->insertarNodo(dato);
+    lista->insertarNodo(dato);
     dato= 9;
-    l1sta->insertarNodo(dato);
+    lista->insertarNodo(dato);
     dato = 0;
-    l1sta->insertarNodo(dato);
+    lista->insertarNodo(dato);
     dato = 4;
-    l1sta->insertarNodo(dato);
+    lista->insertarNodo(dato);
 
-    l1sta->imprimirLista();
-    ShellSort(l1sta->primero);
-    l1sta->imprimirLista();
+    lista->imprimirLista();
+    mergeSort(*lista,0,lista->getTam()-1);
+    lista->imprimirLista();
 
     w.show();
 
