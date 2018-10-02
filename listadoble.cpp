@@ -36,7 +36,7 @@ void ListaDoble<T>::imprimirLista()
         Nodo<T>* temp;
         temp = primero;
         while(temp){
-           cout<<"->"<<temp->getDato();
+           cout<<"<->"<<temp->getDato();
            temp = temp->getSiguiente();
         }
         cout<<endl;

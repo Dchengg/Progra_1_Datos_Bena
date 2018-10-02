@@ -16,20 +16,14 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-<<<<<<< HEAD
-
     scene = new QGraphicsScene();
     connect(ui->generarPushButton,SIGNAL (released()), this, SLOT (handleGenerarButton()));
-
-=======
->>>>>>> c52e9396f8d7e19b0dacd6e7ecbaad9d1c4e028e
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
-<<<<<<< HEAD
 
 void MainWindow::handleGenerarButton(){
     scene->clear();
@@ -62,6 +56,3 @@ void MainWindow::handleGenerarButton(){
 
 
 }
-
-=======
->>>>>>> c52e9396f8d7e19b0dacd6e7ecbaad9d1c4e028e

@@ -33,14 +33,14 @@ SOURCES += \
     burbuja.cpp \
     randomizer.cpp
 
+
 HEADERS += \
         mainwindow.h \
     ListaSimple.h \
     cola.h \
     ListaDoble.h \
     Nodo.h \
-    pila.h \
-    burbuja.h
+    pila.h
 
 FORMS += \
         mainwindow.ui
