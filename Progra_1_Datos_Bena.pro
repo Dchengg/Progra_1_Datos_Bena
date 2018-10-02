@@ -30,7 +30,8 @@ SOURCES += \
     Ordenamientos.cpp \
     ListaDoble.cpp \
     pila.cpp \
-    burbuja.cpp
+    burbuja.cpp \
+    randomizer.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -48,3 +49,5 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES +=

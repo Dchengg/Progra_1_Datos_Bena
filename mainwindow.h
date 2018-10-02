@@ -2,6 +2,12 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QGraphicsScene>
+#include <QGraphicsTextItem>
+#include <QPointF>
+#include <QGraphicsItemAnimation>
+#include <QTimeLine>
+
 
 namespace Ui {
 class MainWindow;
@@ -18,8 +24,11 @@ public:
 private slots:
     void handleGenerarButton();
 
+
 private:
     Ui::MainWindow *ui;
+    QGraphicsScene* scene;
+    void animate(QGraphicsItem* item,float x, float y);
 
 };
 

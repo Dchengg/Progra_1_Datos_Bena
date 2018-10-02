@@ -60,7 +60,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>250</y>
+      <y>260</y>
       <width>47</width>
       <height>13</height>
      </rect>
@@ -116,6 +116,16 @@
     </property>
     <property name="text">
      <string>Tamaño</string>
+    </property>
+   </widget>
+   <widget class="QGraphicsView" name="graphicsView">
+    <property name="geometry">
+     <rect>
+      <x>15</x>
+      <y>11</y>
+      <width>661</width>
+      <height>241</height>
+     </rect>
     </property>
    </widget>
   </widget>
