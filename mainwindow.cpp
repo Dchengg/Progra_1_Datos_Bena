@@ -53,7 +53,26 @@ void MainWindow::handleGenerarButton(){
 }
 
 void MainWindow::handleOrdenarButton(){
-    ListaDoble<ListaSimple<int>*>* pasos =  mergeSort(*lista,0,lista->getTam()-1);
+    QString sort =  ui->sortComboBox->currentText();
+    ListaDoble<ListaSimple<int>*>* pasos;
+    if(sort == "Burbuja")
+        pasos =  Burbuja(lista);
+    else if(sort ==  "Burbuja bidireccional")
+         pasos =  biBurbuja(lista);
+    else if(sort ==  "Insertion")
+         pasos =  insertion(lista);
+    else if(sort ==  "Selection")
+         pasos =  SelectionSort(lista);
+    else if(sort ==  "Heapsort")
+         pasos =  heapSort(*lista);
+    else if(sort ==  "Radixsort")
+         pasos =  radixsort(*lista);
+    else if(sort ==  "Quicksort")
+         pasos =  quickSort(*lista,0,lista->getTam()-1);
+    else if(sort ==  "Mergesort")
+         pasos =  mergeSort(*lista,0,lista->getTam()-1);
+    else
+         pasos =  ShellSort(lista);
     Nodo<ListaSimple<int>*>* aux = pasos->primero;
     while(aux){
         aux->getDato()->imprimirLista();

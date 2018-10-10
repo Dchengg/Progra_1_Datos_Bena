@@ -17,7 +17,7 @@
    <widget class="QPushButton" name="generarPushButton">
     <property name="geometry">
      <rect>
-      <x>420</x>
+      <x>380</x>
       <y>310</y>
       <width>101</width>
       <height>21</height>
@@ -98,17 +98,20 @@
    <widget class="QSpinBox" name="tamSpinBox">
     <property name="geometry">
      <rect>
-      <x>310</x>
+      <x>280</x>
       <y>310</y>
-      <width>42</width>
+      <width>71</width>
       <height>22</height>
      </rect>
+    </property>
+    <property name="maximum">
+     <number>10000</number>
     </property>
    </widget>
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>310</x>
+      <x>280</x>
       <y>280</y>
       <width>47</width>
       <height>13</height>
@@ -131,7 +134,7 @@
    <widget class="QPushButton" name="sortPushButton">
     <property name="geometry">
      <rect>
-      <x>560</x>
+      <x>620</x>
       <y>310</y>
       <width>75</width>
       <height>23</height>
@@ -140,6 +143,61 @@
     <property name="text">
      <string>Ordenar TDA</string>
     </property>
+   </widget>
+   <widget class="QComboBox" name="sortComboBox">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>310</y>
+      <width>69</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>Burbuja</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Burbuja bidireccional</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Insertion</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Selection</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Heapsort</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Radixsort</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Quicksort</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Mergesort</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Shellsort</string>
+     </property>
+    </item>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
