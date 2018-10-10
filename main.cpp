@@ -14,13 +14,17 @@ int main(int argc, char *argv[])
     lista->insertarNodo(x);
     x = 9;
     lista->insertarNodo(x);
+    x = 7;
+    lista->insertarNodo(x);
     x = 1;
     lista->insertarNodo(x);
     x = 0;
     lista->insertarNodo(x);
     x = 99;
     lista->insertarNodo(x);
-    Burbuja(lista);
+    x = 99;
+    lista->insertarNodo(x);
+    mergeSort(*lista,0,lista->getTam()-1);
     lista->imprimirLista();
     MainWindow w;
     w.show();

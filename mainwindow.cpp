@@ -53,7 +53,7 @@ void MainWindow::handleGenerarButton(){
 }
 
 void MainWindow::handleOrdenarButton(){
-    ListaDoble<ListaSimple<int>*>* pasos = Burbuja(lista);
+    ListaDoble<ListaSimple<int>*>* pasos =  mergeSort(*lista,0,lista->getTam()-1);
     Nodo<ListaSimple<int>*>* aux = pasos->primero;
     while(aux){
         aux->getDato()->imprimirLista();

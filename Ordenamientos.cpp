@@ -3,19 +3,22 @@
 #include <vector>
 
 template<class T>
-void insertion(T *cabeza) {
-    if(!cabeza || !cabeza->getSiguiente()) {
-       return;
+ListaDoble<T*>* insertion(T* TDA) {
+    ListaDoble<T*>* pasos = new ListaDoble<T*>();
+    if(!TDA->primero || !TDA->primero->getSiguiente()) {
+       return pasos;
     }
-    T* t1 = cabeza->getSiguiente();
+    Nodo<typename T::type>* t1 = TDA->primero->getSiguiente();
     while(t1) {
         typename T::type sec_data = t1->getDato();
         int found = 0;
-        T* t2 = cabeza;
+        Nodo<typename T::type>* t2 = TDA->primero;
         while(t2 != t1) {
             if(t2->getDato() > t1->getDato() && found == 0) {
                 sec_data = t2->getDato();
                 t2->setDato(t1->getDato());
+                ListaSimple<typename T::type>* copia = new ListaSimple<int>(*TDA);
+                pasos->insertarNodo(copia);
                 found = 1;
                 t2 = t2->getSiguiente();
             } else {
@@ -23,6 +26,8 @@ void insertion(T *cabeza) {
                     typename T::type temp = sec_data;
                     sec_data = t2->getDato();
                     t2->setDato(temp);
+                    ListaSimple<typename T::type>* copia = new ListaSimple<int>(*TDA);
+                    pasos->insertarNodo(copia);
                 }
                 t2 = t2->getSiguiente();
             }
@@ -30,42 +35,48 @@ void insertion(T *cabeza) {
        t2->setDato(sec_data);
        t1 = t1->getSiguiente();
     }
+    return pasos;
 }
 
 template<class T>
-void auxBurbuja(T *nodo1,T *nodo2,int &flag){
+void auxBurbuja(T* TDA,Nodo<typename T::type>*nodo1,Nodo<typename T::type>* nodo2,int &flag,ListaDoble<T*>* pasos){
     if(nodo1->getDato() > nodo2->getDato()){
         typename T::type tmp = nodo1->getDato();
         nodo1->setDato(nodo2->getDato());
         nodo2->setDato(tmp);
         flag = 0;
+        ListaSimple<typename T::type>* copia = new ListaSimple<int>(*TDA);
+        pasos->insertarNodo(copia);
     }
     if(nodo2->getSiguiente()){
-        auxBurbuja(nodo1->getSiguiente(),nodo2->getSiguiente(),flag);
+        auxBurbuja(TDA,nodo1->getSiguiente(),nodo2->getSiguiente(),flag,pasos);
         if(nodo1->getDato() > nodo2->getDato()){
             typename T::type tmp = nodo1->getDato();
             nodo1->setDato(nodo2->getDato());
             nodo2->setDato(tmp);
             flag = 0;
+            ListaSimple<typename T::type>* copia = new ListaSimple<int>(*TDA);
+            pasos->insertarNodo(copia);
         }
     }
 }
 
 template<class T>
-void biBurbuja(T *cabeza){
-    if(!cabeza || !cabeza->getSiguiente()) {
-       return;
+ListaDoble<T*>* biBurbuja(T* TDA){
+    ListaDoble<T*>* pasos = new ListaDoble<T*>();
+    if(!TDA->primero || !TDA->primero->getSiguiente()) {
+       return pasos;
     }
-    T* aux1 = cabeza;
-    T* aux2 = cabeza->getSiguiente();
+    Nodo<typename T::type>* aux1 = TDA->primero;
+    Nodo<typename T::type>* aux2 = TDA->primero->getSiguiente();
     int flag = 0;
     while(!flag || aux2){
        flag = 1;
-       auxBurbuja(aux1,aux2,flag);
+       auxBurbuja(TDA,aux1,aux2,flag,pasos);
        aux1 = aux1->getSiguiente();
        aux2= aux2->getSiguiente();
     }
-
+    return pasos;
 }
 
 template<class T>
@@ -80,7 +91,7 @@ void intercambio(T* nodo1, T* nodo2){
 // To heapify a subtree rooted with node i which is
 // an index in arr[]. n is size of heap
 template<class T>
-void heapify(T l1, int n, int i)
+void heapify(T &l1, int n, int i,ListaDoble<T*>* pasos)
 {
     int largest = i; // Initialize largest as root
     int l = 2*i + 1; // left = 2*i + 1
@@ -98,31 +109,36 @@ void heapify(T l1, int n, int i)
     if (largest != i)
     {
         intercambio(l1[i], l1[largest]);
+        ListaSimple<typename T::type>* copia = new ListaSimple<int>(l1);
+        pasos->insertarNodo(copia);
 
         // Recursively heapify the affected sub-tree
-        heapify(l1, n, largest);
+        heapify(l1, n, largest,pasos);
     }
 }
 
 template<class T>
 // main function to do heap sort
-void heapSort(T l1)
+ListaDoble<T*>* heapSort(T &l1)
 {
+    ListaDoble<T*>* pasos = new ListaDoble<T*>();
     int n = l1.getTam();
     // Build heap (rearrange array)
     for (int i = n / 2 - 1; i >= 0; i--)
-        heapify(l1, n, i);
+        heapify(l1, n, i,pasos);
 
     // One by one extract an element from heap
     for (int i=n-1; i>=0; i--)
     {
         // Move current root to end
         intercambio(l1[0], l1[i]);
+        ListaSimple<typename T::type>* copia = new ListaSimple<int>(l1);
+        pasos->insertarNodo(copia);
 
         // call max heapify on the reduced heap
-        heapify(l1, i, 0);
+        heapify(l1, i, 0,pasos);
     }
-
+    return pasos;
 }
 
 // A utility function to get maximum value in arr[]
@@ -139,7 +155,7 @@ int getMax(T l1, int n)
 // A function to do counting sort of arr[] according to
 // the digit represented by exp.
 template <class T>
-void countSort(T l1, int n, int exp)
+void countSort(T &l1, int n, int exp,ListaDoble<T*>* pasos)
 {
     int output[n]; // output array
     int i, count[10] = {0};
@@ -161,15 +177,20 @@ void countSort(T l1, int n, int exp)
 
     // Copy the output array to arr[], so that arr[] now
     // contains sorted numbers according to current digit
-    for (i = 0; i < n; i++)
+    for (i = 0; i < n; i++){
         l1[i]->setDato(output[i]);
+        ListaSimple<typename T::type>* copia = new ListaSimple<int>(l1);
+        pasos->insertarNodo(copia);
+    }
+
 }
 
 // The main function to that sorts arr[] of size n using
 // Radix Sort
 template<class T>
-void radixsort(T l1)
+ListaDoble<T*>* radixsort(T &l1)
 {
+    ListaDoble<T*>* pasos = new ListaDoble<T*>();
     int n = l1.getTam();
     // Find the maximum number to know number of digits
     typename T::type m = getMax(l1, n);
@@ -178,7 +199,8 @@ void radixsort(T l1)
     // of passing digit number, exp is passed. exp is 10^i
     // where i is current digit number
     for (int exp = 1; m/exp > 0; exp *= 10)
-        countSort(l1, n, exp);
+        countSort(l1, n, exp,pasos);
+    return pasos;
 }
 
 /* This function takes last element as pivot, places
@@ -187,7 +209,7 @@ void radixsort(T l1)
    to left of pivot and all greater elements to right
    of pivot */
 template<class T>
-int partition (T l1, int low, int high)
+int partition (T &l1, int low, int high,ListaDoble<T*>* pasos)
 {
     typename T::type pivot = l1[high]->getDato();    // pivot
     int i = (low - 1);  // Index of smaller element
@@ -200,8 +222,13 @@ int partition (T l1, int low, int high)
         {
             i++;    // increment index of smaller element
             intercambio(l1[i], l1[j]);
+            ListaSimple<typename T::type>* copia = new ListaSimple<int>(l1);
+            pasos->insertarNodo(copia);
+
         }
     }
+    ListaSimple<typename T::type>* copia = new ListaSimple<int>(l1);
+    pasos->insertarNodo(copia);
     intercambio(l1[i + 1], l1[high]);
     return (i + 1);
 }
@@ -211,27 +238,30 @@ int partition (T l1, int low, int high)
   low  --> Starting index,
   high  --> Ending index */
 template<class T>
-void quickSort(T l1, int low, int high)
+ListaDoble<T*>* quickSort(T &l1, int low, int high, ListaDoble<T*>* pasos = new ListaDoble<T*>())
 {
+
     if (low < high)
     {
         /* pi is partitioning index, arr[p] is now
            at right place */
-        int pi = partition(l1, low, high);
+        int pi = partition(l1, low, high,pasos);
 
         // Separately sort elements before
         // partition and after parti    tion
-        quickSort(l1, low, pi - 1);
-        quickSort(l1, pi + 1, high);
+        quickSort(l1, low, pi - 1,pasos);
+        quickSort(l1, pi + 1, high,pasos);
     }
+    return pasos;
 }
 //===================SELECTION=SORT=================================
 template <class T>
-void SelectionSort(T head){ //r is the pointer to the first node
-    T posicion = head;
+ListaDoble<T*>* SelectionSort(T* TDA){ //r is the pointer to the first node
+    ListaDoble<T*>* pasos =  new ListaDoble<T*>();
+    Nodo<typename T::type>* posicion = TDA->primero;
     while(posicion != NULL){
-        T menor = posicion;
-        T temp = posicion;
+        Nodo<typename T::type>* menor = posicion;
+        Nodo<typename T::type>* temp = posicion;
         while(temp != NULL){
             if(temp->getDato() < menor->getDato()){
                 menor = temp;
@@ -239,8 +269,11 @@ void SelectionSort(T head){ //r is the pointer to the first node
             temp = temp->getSiguiente();
         }
         intercambio(posicion, menor);
+        ListaSimple<typename T::type>* copia = new ListaSimple<int>(*TDA);
+        pasos->insertarNodo(copia);
         posicion = posicion->getSiguiente();
     }
+    return pasos;
 }
 //===================BUBBLE=SORT=================================
 
@@ -248,7 +281,7 @@ template <class T>
 inline ListaDoble<T*>* Burbuja(T* lista)
 {
     int condicion;
-    ListaDoble<T*>* pasos = new ListaDoble<ListaSimple<int>*>();
+    ListaDoble<T*>* pasos = new ListaDoble<T*>();
     Nodo<typename T::type>* nodo1 = lista->primero;
     Nodo<typename T::type>* nodo2 = NULL;
     if(!lista->primero || !nodo1->getSiguiente())
@@ -277,13 +310,14 @@ inline ListaDoble<T*>* Burbuja(T* lista)
 //===================SHELL=SORT=================================
 
 template <class T>
-void ShellSort(T cabeza)
+ListaDoble<T*>* ShellSort(T* TDA)
 {
-    if(cabeza)
+    ListaDoble<T*>* pasos = new ListaDoble<T*>();
+    if(TDA->primero)
     {
         int step=0;
         int lenght=0;
-        T puntero=cabeza;
+        Nodo<typename T::type>* puntero= TDA->primero;
         while(puntero)
         {
             lenght++;
@@ -295,11 +329,11 @@ void ShellSort(T cabeza)
             for(int i=step;i>0;i--)
                 for(int j=step-i; j<lenght; j+=step)
                 {
-                    puntero=cabeza;
+                    puntero= TDA->primero;
                     int k;
                     for(k=0;k<j;k++)
                         puntero=puntero->getSiguiente();
-                    T c=puntero;
+                    Nodo<typename T::type>* c=puntero;
                     int temp=k+step;
                     while(c)
                     {
@@ -313,57 +347,21 @@ void ShellSort(T cabeza)
                             if(c)
                                 if(puntero->getDato()>c->getDato())
                                 {
-                                    int t=puntero->getDato();
-                                    puntero->getDato()=c->getDato();
-                                    c->getDato()=t;
+                                    int t = puntero->getDato();
+                                    puntero->setDato(c->getDato());
+                                    c->setDato(t);
+                                    ListaSimple<typename T::type>* copia = new ListaSimple<int>(*TDA);
+                                    pasos->insertarNodo(copia);
                                 }
                                 temp+=step;
                     }
                 }
     }
-    cout<<"Sorting is done"<<endl;
+    return pasos;
 }
 //===================MERGE=SORT=================================
-/*template <class T>
-void MergeSort(T **head)
-{
-    T first = new Nodo<T>;
-    T second = new Nodo<T>;
-    T temp = new Nodo<T>;
-    first = *head;
-    temp = *head;
-
-    // Return if list have less than two nodes.
-    if(first == NULL || first->next == NULL)
-    {
-        return;
-    }
-    else
-    {
-        // Break the list into two half as first and second as head of list.
-        while(first->next != NULL)
-        {
-            first = first->next;
-            if(first->next != NULL)
-            {
-                temp = temp->next;
-                first = first->next;
-            }
-        }
-        second = temp->next;
-        temp->next = NULL;
-        first = *head;
-    }
-
-    // Implementing divide and conquer approach.
-    MergeSort(&first);
-    MergeSort(&second);
-
-    // Merge the two part of the list into a sorted one.
-    *head = Merge(first, second);
-}*/
-//mergeSort(*lista,0,lista->getTam()-1);
-inline void merge(ListaSimple<int> lista, int l, int m, int r)
+template<class T>
+inline void merge(T &lista, int l, int m, int r,ListaDoble<T*>* pasos)
 {
     int i, j, k;
     int n1 = m - l + 1;
@@ -388,11 +386,15 @@ inline void merge(ListaSimple<int> lista, int l, int m, int r)
         {
             lista[k]->setDato(L[i]);
             i++;
+            ListaSimple<typename T::type>* copia = new ListaSimple<int>(lista);
+            pasos->insertarNodo(copia);
         }
         else
         {
             lista[k]->setDato(R[j]);
             j++;
+            ListaSimple<typename T::type>* copia = new ListaSimple<int>(lista);
+            pasos->insertarNodo(copia);
         }
         k++;
     }
@@ -404,6 +406,8 @@ inline void merge(ListaSimple<int> lista, int l, int m, int r)
         lista[k]->setDato(L[i]);
         i++;
         k++;
+        ListaSimple<typename T::type>* copia = new ListaSimple<int>(lista);
+        pasos->insertarNodo(copia);
     }
 
     /* Copy the remaining elements of R[], if there
@@ -413,13 +417,15 @@ inline void merge(ListaSimple<int> lista, int l, int m, int r)
         lista[k]->setDato(R[j]);
         j++;
         k++;
+        ListaSimple<typename T::type>* copia = new ListaSimple<int>(lista);
+        pasos->insertarNodo(copia);
     }
 }
 
 /* l is for left index and r is right index of the
    sub-array of arr to be sorted */
-
-inline void mergeSort(ListaSimple<int> l1, int l, int r)
+template<class T>
+inline ListaDoble<T*>* mergeSort(T &l1, int l, int r,ListaDoble<T*>* pasos = new ListaDoble<T*>())
 {
 
     if (l < r)
@@ -429,11 +435,13 @@ inline void mergeSort(ListaSimple<int> l1, int l, int r)
         int m = l+(r-l)/2;
 
         // Sort first and second halves
-        mergeSort(l1, l, m);
-        mergeSort(l1, m+1, r);
+        mergeSort(l1, l, m,pasos);
+        mergeSort(l1, m+1, r,pasos);
 
-        merge(l1, l, m, r);
+        merge(l1, l, m, r,pasos);
     }
+
+    return pasos;
 }
 //===================BIN=SORT=================================
 /*void bucketSort(ListaSimple<int> lista)
