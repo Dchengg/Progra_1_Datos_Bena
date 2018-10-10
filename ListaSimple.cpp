@@ -56,6 +56,7 @@ int ListaSimple<T>::getTam(){
     return tam;
 }
 
+
 template<class T>
 Nodo<T>* ListaSimple<T>::operator[](int const index) {
     Nodo<T>* aux = primero;

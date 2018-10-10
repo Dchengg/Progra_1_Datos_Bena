@@ -12,6 +12,7 @@ class ListaDoble
     public:
         typedef T type;
         ListaDoble();
+        ListaDoble(ListaDoble<T>  const &original);
         void insertarNodo (T &Dato);
         void imprimirLista();
         int getTam();

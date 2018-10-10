@@ -11,6 +11,18 @@ ListaDoble<T>::ListaDoble() //
 }
 
 template<class T>
+ListaDoble<T>::ListaDoble(ListaDoble<T> const &original){
+    primero = 0;
+    tam = 0;
+    Nodo<T>* aux = original.primero;
+    while(aux){
+        int dato = aux->getDato();
+        insertarNodo(dato);
+        aux = aux->getSiguiente();
+    }
+}
+
+template<class T>
 void ListaDoble<T>::insertarNodo (T &dato)
 {
     if(!primero)

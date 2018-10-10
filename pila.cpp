@@ -12,6 +12,19 @@ pila<T>::pila()
     tam = 0;
 }
 
+
+template<class T>
+pila<T>::pila(pila<T> const &original){
+    Tope = 0;
+    tam = 0;
+    Nodo<T>* aux = original.primero;
+    while(aux){
+        int dato = aux->getDato();
+        push(dato);
+        aux = aux->getSiguiente();
+    }
+}
+
 template<class T>
 void pila<T>::push(T &dato)
 {

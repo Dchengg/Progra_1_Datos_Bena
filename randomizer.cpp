@@ -10,11 +10,12 @@ T getRandomNum(int desde, int hasta){
     return resultado;
 }
 
-template<class T>
+template<class E,class T>
 void llenarTDA(T TDA, int tam, int desde, int hasta){
-    int num;
+    E num;
     for(int i = 0; i <= tam;i++){
-        num = getRandomNum<int>(desde,hasta);
+        num = getRandomNum<E>(desde,hasta);
         TDA->insertarNodo(num);
      }
 }
+

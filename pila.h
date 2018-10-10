@@ -11,6 +11,7 @@ private:
     int tam;
 public:
     pila();
+    pila(pila<T>  const &original);
     void push(T &x);
     void imprimirPila();
     int getTam();

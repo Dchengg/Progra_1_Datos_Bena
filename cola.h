@@ -13,6 +13,7 @@ private:
 public:
     typedef T type;
     Cola();
+    Cola(Cola<T>  const &original);
     void push(T &x);
     void imprimirCola();
     int getTam();

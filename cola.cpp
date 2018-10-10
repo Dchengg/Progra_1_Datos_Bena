@@ -11,6 +11,20 @@ Cola<T>::Cola()
     Fondo = 0;
     tam = 0;
 }
+
+
+template<class T>
+Cola<T>::Cola(Cola<T> const &original){
+    Tope = 0;
+    tam = 0;
+    Nodo<T>* aux = original.primero;
+    while(aux){
+        int dato = aux->getDato();
+        push(dato);
+        aux = aux->getSiguiente();
+    }
+}
+
 template <class T>
 void Cola<T>::push(T &x){
     if(!Tope){

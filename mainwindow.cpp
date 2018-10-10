@@ -26,7 +26,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::handleGenerarButton(){
     scene->clear();
-    llenarTDA(lista, ui->tamSpinBox->value(),ui->desdeSpinBox->value(), ui->hastaSpinBox->value());
+    llenarTDA<int>(lista, ui->tamSpinBox->value(),ui->desdeSpinBox->value(), ui->hastaSpinBox->value());
     lista->imprimirLista();
     Nodo<int>* aux = lista->primero;
     int x = 0;
