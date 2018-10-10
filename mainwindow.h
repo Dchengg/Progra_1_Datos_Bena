@@ -7,6 +7,7 @@
 #include <QPointF>
 #include <QGraphicsItemAnimation>
 #include <QTimeLine>
+#include "Ordenamientos.cpp"
 
 
 namespace Ui {
@@ -23,12 +24,14 @@ public:
 
 private slots:
     void handleGenerarButton();
+    void handleOrdenarButton();
 
 
 private:
     Ui::MainWindow *ui;
     QGraphicsScene* scene;
-    void animate(QGraphicsItem* item,float x, float y);
+    ListaSimple<int>* lista = new ListaSimple<int>();
+    void delay();
 
 };
 

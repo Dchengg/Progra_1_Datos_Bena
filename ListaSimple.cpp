@@ -12,6 +12,19 @@ ListaSimple<T>::ListaSimple()
 }
 
 template<class T>
+ListaSimple<T>::ListaSimple(ListaSimple<T> const &original){
+    primero = 0;
+    tam = 0;
+    Nodo<T>* aux = original.primero;
+    while(aux){
+        int dato = aux->getDato();
+        insertarNodo(dato);
+        aux = aux->getSiguiente();
+    }
+}
+
+
+template<class T>
 void ListaSimple<T>::insertarNodo (T &dato) {
     if(!primero){
         primero = new Nodo<T>(dato);

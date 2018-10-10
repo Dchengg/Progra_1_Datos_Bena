@@ -15,6 +15,7 @@ class ListaSimple
     public:
         typedef T type;
         ListaSimple();
+        ListaSimple(ListaSimple<T>  const &original);
         void insertarNodo (T &x);
         void imprimirLista();
         int getTam();

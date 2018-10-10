@@ -1,4 +1,5 @@
 #include "ListaSimple.cpp"
+#include "ListaDoble.cpp"
 #include <vector>
 
 template<class T>
@@ -242,31 +243,36 @@ void SelectionSort(T head){ //r is the pointer to the first node
     }
 }
 //===================BUBBLE=SORT=================================
-template <class T>
 
-void Burbuja(T cabeza)
+template <class T>
+inline ListaDoble<T*>* Burbuja(T* lista)
 {
     int condicion;
-    T nodo1 = cabeza;
-    T nodo2 = NULL;
-    if(!cabeza || !nodo1->getSiguiente())
+    ListaDoble<T*>* pasos = new ListaDoble<ListaSimple<int>*>();
+    Nodo<typename T::type>* nodo1 = lista->primero;
+    Nodo<typename T::type>* nodo2 = NULL;
+    if(!lista->primero || !nodo1->getSiguiente())
     {
-       return;
+       return pasos;
     }
     do {
         condicion=0;
-        nodo1 = cabeza;
+        nodo1 = lista->primero;
         while (nodo1->getSiguiente() )
         {
             if(nodo1->getDato() > nodo1->getSiguiente()->getDato())
             {
                intercambio(nodo1,nodo1->getSiguiente());
                condicion=1;
+               ListaSimple<typename T::type>* copia = new ListaSimple<int>(*lista);
+               pasos->insertarNodo(copia);
+
             }
             nodo1 = nodo1->getSiguiente();
         }
         nodo2 = nodo1;
     }while(condicion);
+    return pasos;
 }
 //===================SHELL=SORT=================================
 
@@ -357,7 +363,7 @@ void MergeSort(T **head)
     *head = Merge(first, second);
 }*/
 //mergeSort(*lista,0,lista->getTam()-1);
-void merge(ListaSimple<int> lista, int l, int m, int r)
+inline void merge(ListaSimple<int> lista, int l, int m, int r)
 {
     int i, j, k;
     int n1 = m - l + 1;
@@ -413,7 +419,7 @@ void merge(ListaSimple<int> lista, int l, int m, int r)
 /* l is for left index and r is right index of the
    sub-array of arr to be sorted */
 
-void mergeSort(ListaSimple<int> l1, int l, int r)
+inline void mergeSort(ListaSimple<int> l1, int l, int r)
 {
 
     if (l < r)

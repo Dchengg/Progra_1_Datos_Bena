@@ -30,7 +30,6 @@ SOURCES += \
     Ordenamientos.cpp \
     ListaDoble.cpp \
     pila.cpp \
-    burbuja.cpp \
     randomizer.cpp
 
 
